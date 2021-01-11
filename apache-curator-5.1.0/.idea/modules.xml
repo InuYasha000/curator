@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/apache-curator.iml" filepath="$PROJECT_DIR$/apache-curator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/curator-client/curator-client.iml" filepath="$PROJECT_DIR$/curator-client/curator-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/curator-examples/curator-examples.iml" filepath="$PROJECT_DIR$/curator-examples/curator-examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/curator-framework/curator-framework.iml" filepath="$PROJECT_DIR$/curator-framework/curator-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/curator-recipes/curator-recipes.iml" filepath="$PROJECT_DIR$/curator-recipes/curator-recipes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/curator-test/curator-test.iml" filepath="$PROJECT_DIR$/curator-test/curator-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/curator-test-zk35/curator-test-zk35.iml" filepath="$PROJECT_DIR$/curator-test-zk35/curator-test-zk35.iml" />
+      <module fileurl="file://$PROJECT_DIR$/curator-x-async/curator-x-async.iml" filepath="$PROJECT_DIR$/curator-x-async/curator-x-async.iml" />
+      <module fileurl="file://$PROJECT_DIR$/curator-x-discovery/curator-x-discovery.iml" filepath="$PROJECT_DIR$/curator-x-discovery/curator-x-discovery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/curator-x-discovery-server/curator-x-discovery-server.iml" filepath="$PROJECT_DIR$/curator-x-discovery-server/curator-x-discovery-server.iml" />
+    </modules>
+  </component>
+</project>

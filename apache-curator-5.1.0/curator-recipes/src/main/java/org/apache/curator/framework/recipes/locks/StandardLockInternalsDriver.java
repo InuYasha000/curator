@@ -38,6 +38,7 @@ public class StandardLockInternalsDriver implements LockInternalsDriver
         validateOurIndex(sequenceNodeName, ourIndex);
 
         //maxLeases：每次允许多少个客户端获取锁
+        //其实就是看你的位置是不是在能够获取锁的顺位内，比如写锁这里就是1，也就是第一位
         boolean         getsTheLock = ourIndex < maxLeases;
         //没有获取锁的话就拿到上一个节点的路径
         String          pathToWatch = getsTheLock ? null : children.get(ourIndex - maxLeases);

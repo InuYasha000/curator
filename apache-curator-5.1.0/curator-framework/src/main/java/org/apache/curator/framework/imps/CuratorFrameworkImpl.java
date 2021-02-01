@@ -67,6 +67,7 @@ public class CuratorFrameworkImpl implements CuratorFramework
 {
     private final Logger log = LoggerFactory.getLogger(getClass());
     private final CuratorZookeeperClient client;
+    //监听器
     private final StandardListenerManager<CuratorListener> listeners;
     private final StandardListenerManager<UnhandledErrorListener> unhandledErrorListeners;
     private final ThreadFactory threadFactory;
@@ -109,6 +110,7 @@ public class CuratorFrameworkImpl implements CuratorFramework
     public CuratorFrameworkImpl(CuratorFrameworkFactory.Builder builder)
     {
         ZookeeperFactory localZookeeperFactory = makeZookeeperFactory(builder.getZookeeperFactory());
+        //封装了zk的客户端
         this.client = new CuratorZookeeperClient
             (
                 localZookeeperFactory,
@@ -116,7 +118,7 @@ public class CuratorFrameworkImpl implements CuratorFramework
                 builder.getSessionTimeoutMs(),
                 builder.getConnectionTimeoutMs(),
                 builder.getWaitForShutdownTimeoutMs(),
-                new Watcher()
+                new Watcher()//监听器，这个watcher负责回调listener
                 {
                     @Override
                     public void process(WatchedEvent watchedEvent)
@@ -130,6 +132,7 @@ public class CuratorFrameworkImpl implements CuratorFramework
             );
 
         internalConnectionHandler = new StandardInternalConnectionHandler();
+        //保存我们给framework加的监听器
         listeners = StandardListenerManager.standard();
         unhandledErrorListeners = StandardListenerManager.standard();
         backgroundOperations = new DelayQueue<OperationAndData<?>>();

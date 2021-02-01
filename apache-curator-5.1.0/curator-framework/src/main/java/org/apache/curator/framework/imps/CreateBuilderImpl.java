@@ -580,6 +580,7 @@ public class CreateBuilderImpl implements CreateBuilder, CreateBuilder2, Backgro
         }
         else
         {
+            //构造znode
             String path = protectedPathInForeground(adjustedPath, data, aclList);
             returnPath = client.unfixForNamespace(path);
         }
@@ -1128,6 +1129,7 @@ public class CreateBuilderImpl implements CreateBuilder, CreateBuilder2, Backgro
                         {
                             try
                             {
+                                //创建节点
                                 createdPath = client.getZooKeeper().create(path, data, aclList, createMode, storingStat, ttl);
                             }
                             catch ( KeeperException.NoNodeException e )

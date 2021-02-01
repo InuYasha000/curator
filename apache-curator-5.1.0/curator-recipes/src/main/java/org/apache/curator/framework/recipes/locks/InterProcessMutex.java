@@ -241,6 +241,7 @@ public class InterProcessMutex implements InterProcessLock, Revocable<InterProce
             return true;
         }
 
+        //加锁
         String lockPath = internals.attemptLock(time, unit, getLockNodeBytes());
         if ( lockPath != null )
         {

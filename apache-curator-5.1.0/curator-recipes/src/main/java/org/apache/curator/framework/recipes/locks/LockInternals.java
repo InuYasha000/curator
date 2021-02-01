@@ -222,7 +222,9 @@ public class LockInternals
 
             try
             {
+                //创建临时顺序节点
                 ourPath = driver.createsTheLock(client, path, localLockNodeBytes);
+                //看有没有持有锁
                 hasTheLock = internalLockLoop(startMillis, millisToWait, ourPath);
             }
             catch ( KeeperException.NoNodeException e )

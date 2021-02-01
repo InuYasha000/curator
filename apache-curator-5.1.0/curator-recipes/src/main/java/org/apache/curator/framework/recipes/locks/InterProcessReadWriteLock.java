@@ -130,7 +130,7 @@ public class InterProcessReadWriteLock
     {
         lockData = (lockData == null) ? null : Arrays.copyOf(lockData, lockData.length);
 
-        //写锁
+        //写锁，就是在你的目录下创建  __WRIT__ 目录
         writeMutex = new InternalInterProcessMutex
         (
             client,
@@ -149,7 +149,7 @@ public class InterProcessReadWriteLock
             }
         );
 
-        //读锁
+        //读锁，就是在你的目录下创建 __READ__
         readMutex = new InternalInterProcessMutex
         (
             client,
@@ -190,7 +190,7 @@ public class InterProcessReadWriteLock
 
     private PredicateResults readLockPredicate(List<String> children, String sequenceNodeName) throws Exception
     {
-        //这里表示当前客户端的同一个线程先加了一个写锁，再加了一个读锁，表示是可以获取到锁的
+        //这里表示是当前客户端的同一个线程先加了一个写锁，再加了一个读锁，表示是可以获取到锁的
         if ( writeMutex.isOwnedByCurrentThread() )
         {
             return new PredicateResults(null, true);

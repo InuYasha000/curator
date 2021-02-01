@@ -122,6 +122,7 @@ public class ConnectionStateManager implements Closeable
     {
         Preconditions.checkState(state.compareAndSet(State.LATENT, State.STARTED), "Cannot be started more than once");
 
+        //启动线程
         service.submit
             (
                 new Callable<Object>()
@@ -268,6 +269,8 @@ public class ConnectionStateManager implements Closeable
                 long elapsedMs = startOfSuspendedEpoch == 0 ? useSessionTimeoutMs / 2 : System.currentTimeMillis() - startOfSuspendedEpoch;
                 long pollMaxMs = useSessionTimeoutMs - elapsedMs;
 
+                //从eventQueue中poll出来
+                //启动一个线程，监听eventQueue，代表的是跟zk之间的网络连接变化的事件，收到这种事件之后，应该就会通知 ConnectionStateListener
                 final ConnectionState newState = eventQueue.poll(pollMaxMs, TimeUnit.MILLISECONDS);
                 if ( newState != null )
                 {

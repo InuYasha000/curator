@@ -56,7 +56,9 @@ import org.apache.curator.CuratorZookeeperClient;
  */
 public class CuratorFrameworkFactory
 {
+    //心跳断开后可以在这个时间内再次连接就行了，默认60s
     private static final int DEFAULT_SESSION_TIMEOUT_MS = Integer.getInteger("curator-default-session-timeout", 60 * 1000);
+    //客户端和zk连接的超时时间，也就是15s内连不上就认为超时了，默认15s
     private static final int DEFAULT_CONNECTION_TIMEOUT_MS = Integer.getInteger("curator-default-connection-timeout", 15 * 1000);
 
     private static final byte[] LOCAL_ADDRESS = getLocalAddress();
@@ -81,8 +83,8 @@ public class CuratorFrameworkFactory
     /**
      * Create a new client with default session timeout and default connection timeout
      *
-     * @param connectString list of servers to connect to
-     * @param retryPolicy   retry policy to use
+     * @param connectString list of servers to connect to 连接地址
+     * @param retryPolicy   retry policy to use 重试机制
      * @return client
      */
     public static CuratorFramework newClient(String connectString, RetryPolicy retryPolicy)
@@ -247,11 +249,11 @@ public class CuratorFrameworkFactory
         /**
          * Allows to configure if the ensemble configuration changes will be watched.
          * The default value is {@code true}.<br>
-         * 
+         *
          * IMPORTANT: Use this method in combination with {@link #ensembleProvider(EnsembleProvider)} to provide
          * an instance that returns {@code false} on {@link EnsembleProvider#updateServerListEnabled()} in order
          * to fully achieve that ensemble server list changes are ignored<br>
-         * 
+         *
          * @param withEnsembleTracker use {@code false} if you want to avoid following ensemble configuration changes
          * @return this
          */
@@ -657,8 +659,7 @@ public class CuratorFrameworkFactory
             return connectionStateListenerManagerFactory;
         }
 
-        private Builder()
-        {
+        private Builder() {
         }
     }
 
